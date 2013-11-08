@@ -68,7 +68,7 @@ function UsersDAO(db) {
 
         // TODO: hw2.3
         // New +
-        users.findOne({ '_id' : username}, validateUserDoc(err, user);
+        users.findOne({ '_id' : username}, validateUserDoc(err, user));
         // Old + 
         //callback(Error("validateLogin Not Yet Implemented!"), null);
     }

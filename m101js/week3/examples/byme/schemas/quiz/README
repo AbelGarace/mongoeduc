@@ -1,4 +1,4 @@
-Schema Design
+# Schema Design
 
 What's the single most important factor in designing your application schema within MongoDB?
 
@@ -13,7 +13,7 @@ Keeping the data in third normal form.
 
 
 
-Design for Blog
+# Design for Blog
 
 Which data access pattern is not well supported by the blog schema?
 
@@ -27,15 +27,3 @@ Collecting all the information to display a single post
 Providing a table of contents by tag
 
 
-Living without Transactions
-
-Which of the following operations operate atomically within a single document? Check all that apply.
-
-
-(OK) Update
-
-(OK) findAndModify
-
-(OK) $addToSet (within an update)
-
-(OK) $push within an update
