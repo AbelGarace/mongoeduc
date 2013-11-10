@@ -13,7 +13,7 @@ function PostsDAO(db) {
 
     this.insertEntry = function (title, body, tags, author, callback) {
         "use strict";
-        console.log("inserting blog entry" + title + body);
+        console.log("inserting blog entry: " + title + " " + body);
 
         // fix up the permalink to not include whitespace
         var permalink = title.replace( /\s/g, '_' );
@@ -30,7 +30,18 @@ function PostsDAO(db) {
 
         // now insert the post
         // hw3.2 TODO
-        callback(Error("insertEntry NYI"), null);
+        // + New
+        posts.insert(post, function(err, result){
+            "use strict";
+            if(!err){
+                console.log("Post inserted " + result[0].permalink);
+                return callback(null, result[0].permalink);  
+            }
+            return callback(err, null);
+        });
+
+        // + Old 
+        // callback(Error("insertEntry NYI"), null);
     }
 
     this.getPosts = function(num, callback) {
@@ -82,7 +93,19 @@ function PostsDAO(db) {
         }
 
         // hw3.3 TODO
-        callback(Error("addComment NYI"), null);
+        // + New
+        var query = { "permalink" : permalink };
+        var operator = { '$push' : { 'comments' : comment } };
+        posts.update(query, operator, function(err, updated){
+            "use strict" 
+            if(err)
+                return callback(err, null);
+            //console.log("Comment: " + comment.body + " inserted in post: " + permalink );
+            console.log("Comment: " + updated);
+            return callback(null, updated);   
+        });
+        // + Old
+        // callback(Error("addComment NYI"), null);
     }
 }
 

@@ -1,4 +1,4 @@
-Homework 2.1
+# Homework 2.1
 
 In this problem, you will be using an old weather dataset. You should have included with your homework files a "weather_data.csv" file. This is a comma separated value file that you can import into MongoDB as follows:
 
@@ -23,6 +23,6 @@ Reading clockwise from true north, the wind direction is measured by degrees aro
 Your assignment is to figure out the "State" that recorded the lowest "Temperature" when the wind was coming from the west ("Wind Direction" between 180 and 360). Please enter the name of the state that meets this requirement. Do not include the surrounding quotes in providing your answer.
 
 
-
+Query: db.data.find({ "Wind Direction" : { "$gt" : 180, "$lt" : 360 } }}.sort({ "Temperature" : 1}).limit(1).pretty() 
 
 Answer: New Mexico
